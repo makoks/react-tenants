@@ -21,7 +21,7 @@ const Address = () => {
     );
 
     return (
-        <Form layout="inline" form={form} name="address-form">
+        <Form layout="inline" form={form} name="address-form" style={{marginBottom: 50}}>
             <StreetSelect />
             <HouseSelect />
             <FlatSelect />
