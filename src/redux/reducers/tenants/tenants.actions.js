@@ -1,5 +1,14 @@
 import actionTypes from "./tenants.actionTypes";
 
+const loadTenantsStart = () => ({
+    type: actionTypes.LOAD_TENANTS_START
+});
+const loadTenantsSuccess = tenants => ({
+    type: actionTypes.LOAD_TENANTS_SUCCESS,
+    payload: tenants
+});
+
+
 const openAddModal = () => ({
     type: actionTypes.OPEN_ADD_MODAL
 });
@@ -26,6 +35,9 @@ const tenantsError = errorMessage => ({
 });
 
 const actions = {
+    loadTenantsStart,
+    loadTenantsSuccess,
+
     openAddModal,
     closeAddModal,
 

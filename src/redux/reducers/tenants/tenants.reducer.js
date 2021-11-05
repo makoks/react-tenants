@@ -3,6 +3,17 @@ import initialState from "./tenants.initialState";
 
 const tenantsReducer = (state = initialState, { type, payload }) => {
     switch (type) {
+        case actionTypes.LOAD_TENANTS_START:
+            return {
+                ...state,
+                errorMessage: null
+            };
+        case actionTypes.LOAD_TENANTS_SUCCESS:
+            return {
+                ...state,
+                tenants: payload
+            };
+
         case actionTypes.OPEN_ADD_MODAL:
             return {
                 ...state,
@@ -40,6 +51,8 @@ const tenantsReducer = (state = initialState, { type, payload }) => {
         case actionTypes.TENANTS_ERROR:
             return {
                 ...state,
+                areTenantsLoading: false,
+                tenants: null,
                 errorMessage: payload
             };
 

@@ -1,4 +1,6 @@
 const initialState =  {
+    tenants: null,
+
     addModalVisible: false,
 
     addTenantLoading: false,

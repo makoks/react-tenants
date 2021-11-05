@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Form, Select } from "antd";
 
 import actions from "../redux/reducers/address/address.actions";
+import { loadTenants } from "../redux/reducers/tenants/tenants.thunks";
 
 const { Option } = Select;
 
@@ -13,6 +14,7 @@ const FlatSelect = () => {
 
     const onFlatChange = flatId => {
         dispatch(actions.selectFlat(flatId));
+        dispatch(loadTenants(flatId));
     };
 
     return (

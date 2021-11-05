@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Alert } from "antd";
 
+import TenantsTable from "./TenantsTable";
 import AddTenantButton from "./AddTenantButton";
 
 const Tenants = () => {
@@ -21,6 +22,7 @@ const Tenants = () => {
 
     return (
         <>
+            <TenantsTable />
             <AddTenantButton />
         </>
     );
