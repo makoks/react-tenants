@@ -12,10 +12,20 @@ export const loadTenants = addressId => dispatch => {
 export const addTenant = (values, addressId) => (dispatch) => {
     dispatch(actions.addTenantStart());
 
-    TenantsService.addTenant(values)
+    TenantsService.postTenant(values)
         .then(response => TenantsService.bindTenant(response.data.id, addressId))
         .then(() => dispatch(actions.addTenantSuccess()))
-        .then(setTimeout(() => dispatch(actions.closeAddModal()), 1500))
+        .then(() => setTimeout(() => dispatch(actions.closeAddModal()), 1500))
         .catch(error => dispatch(actions.addTenantError(error.message)))
+        .then(() => dispatch(loadTenants(addressId)));
+};
+
+export const editTenant = (values, addressId) => dispatch => {
+    dispatch(actions.editTenantStart());
+
+    TenantsService.postTenant(values)
+        .then(() => dispatch(actions.editTenantSuccess()))
+        .then(() => setTimeout(() => dispatch(actions.closeEditModal()), 1500))
+        .catch(error => dispatch(actions.editTenantError(error.message)))
         .then(() => dispatch(loadTenants(addressId)));
 };

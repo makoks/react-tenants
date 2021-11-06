@@ -17,6 +17,15 @@ const closeAddModal = () => ({
 });
 
 
+const openEditModal = (tenant) => ({
+    type: actionTypes.OPEN_EDIT_MODAL,
+    payload: tenant
+});
+const closeEditModal = () => ({
+    type: actionTypes.CLOSE_EDIT_MODAL
+});
+
+
 const addTenantStart = () => ({
     type: actionTypes.ADD_TENANT_START
 });
@@ -25,6 +34,18 @@ const addTenantSuccess = () => ({
 });
 const addTenantError = errorMessage => ({
     type: actionTypes.ADD_TENANT_ERROR,
+    payload: errorMessage
+});
+
+
+const editTenantStart = () => ({
+    type: actionTypes.EDIT_TENANT_START
+});
+const editTenantSuccess = () => ({
+    type: actionTypes.EDIT_TENANT_SUCCESS
+});
+const editTenantError = errorMessage => ({
+    type: actionTypes.EDIT_TENANT_ERROR,
     payload: errorMessage
 });
 
@@ -41,9 +62,16 @@ const actions = {
     openAddModal,
     closeAddModal,
 
+    openEditModal,
+    closeEditModal,
+
     addTenantStart,
     addTenantSuccess,
     addTenantError,
+
+    editTenantStart,
+    editTenantSuccess,
+    editTenantError,
 
     tenantsError
 };
