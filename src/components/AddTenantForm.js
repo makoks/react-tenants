@@ -30,7 +30,7 @@ const AddTenantForm = () => {
                 rules={[
                     {
                         required: true,
-                        message: 'Укажите номер телефона'
+                        message: "Укажите номер телефона"
                     }
                 ]}
             >
