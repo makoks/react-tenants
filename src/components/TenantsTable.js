@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Table, Typography, Button, Modal, Alert } from "antd";
-import { EditOutlined } from "@ant-design/icons";
+import { Table, Typography, Space, Button, Modal, Alert } from "antd";
+import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
 import actions from "../redux/reducers/tenants/tenants.actions";
+import { deleteTenant } from "../redux/reducers/tenants/tenants.thunks";
 import EditTenantForm from "./EditTenantForm";
 
 const { Text, Title } = Typography;
@@ -17,9 +18,11 @@ const TenantsTable = () => {
         editTenantSuccess,
         editTenantError
     } = useSelector(state => state.tenants);
+    const { flatId } = useSelector(state => state.address);
 
     const onOpenEditModal = tenant => dispatch(actions.openEditModal(tenant));
     const onCloseEditModal = () => dispatch(actions.closeEditModal());
+    const onDeleteTenant = id => dispatch(deleteTenant(id, flatId));
 
     const columns = [{
         title: "ФИО",
@@ -38,14 +41,26 @@ const TenantsTable = () => {
         title: "Действия",
         key: "actions",
         render: (text, tenant) => (
-            <Button
-                type="primary"
-                icon={<EditOutlined />}
-                onClick={() => onOpenEditModal(tenant)}
-                ghost
-            >
-                Изменить данные
-            </Button>)
+            <Space>
+                <Button
+                    type="primary"
+                    icon={<EditOutlined />}
+                    onClick={() => onOpenEditModal(tenant)}
+                    ghost
+                >
+                    Изменить данные
+                </Button>
+                <Button
+                    type="primary"
+                    icon={<DeleteOutlined />}
+                    onClick={() => onDeleteTenant(tenant.bindId)}
+                    ghost
+                    danger
+                >
+                    Удалить
+                </Button>
+            </Space>
+        )
     }];
 
     return (

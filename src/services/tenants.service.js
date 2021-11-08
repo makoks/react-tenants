@@ -7,6 +7,7 @@ class TenantsService {
         "/HousingStock/bind_client",
         { addressId, clientId }
     );
+    deleteTenant = id => apiClient().delete(`HousingStock/bind_client/${id}`);
 }
 
 export default new TenantsService();

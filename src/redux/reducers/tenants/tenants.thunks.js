@@ -29,3 +29,9 @@ export const editTenant = (values, addressId) => dispatch => {
         .catch(error => dispatch(actions.editTenantError(error.message)))
         .then(() => dispatch(loadTenants(addressId)));
 };
+
+export const deleteTenant = (id, addressId) => dispatch => {
+    TenantsService.deleteTenant(id, addressId)
+        .then(() => dispatch(loadTenants(addressId)))
+        .catch(error => dispatch(actions.tenantsError(error.message)));
+};
