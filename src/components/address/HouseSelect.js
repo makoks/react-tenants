@@ -10,7 +10,7 @@ const { Option } = Select;
 const HouseSelect = () => {
     const dispatch = useDispatch();
 
-    const { areHousesLoading, houses, flats } = useSelector(state => state.address);
+    const { areHousesLoading, houses } = useSelector(state => state.address);
 
     const onHouseChange = houseId => {
         dispatch(actions.selectHouse(houseId));
