@@ -87,7 +87,6 @@ const tenantsReducer = (state = initialState, { type, payload }) => {
         case actionTypes.TENANTS_ERROR:
             return {
                 ...state,
-                areTenantsLoading: false,
                 tenants: null,
                 errorMessage: payload
             };
