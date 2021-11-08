@@ -1,27 +1,22 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Table, Typography, Space, Button, Modal, Alert } from "antd";
+import { Table, Typography, Space, Button } from "antd";
 import { EditOutlined, DeleteOutlined } from "@ant-design/icons";
 
-import actions from "../redux/reducers/tenants/tenants.actions";
-import { deleteTenant } from "../redux/reducers/tenants/tenants.thunks";
-import EditTenantForm from "./EditTenantForm";
+import actions from "../../redux/reducers/tenants/tenants.actions";
+import { deleteTenant } from "../../redux/reducers/tenants/tenants.thunks";
 
-const { Text, Title } = Typography;
+import EditTenantModal from "./EditTenantModal";
+
+const { Text } = Typography;
 
 const TenantsTable = () => {
     const dispatch = useDispatch();
 
-    const {
-        tenants,
-        editModalVisible,
-        editTenantSuccess,
-        editTenantError
-    } = useSelector(state => state.tenants);
+    const { tenants } = useSelector(state => state.tenants);
     const { flatId } = useSelector(state => state.address);
 
     const onOpenEditModal = tenant => dispatch(actions.openEditModal(tenant));
-    const onCloseEditModal = () => dispatch(actions.closeEditModal());
     const onDeleteTenant = id => dispatch(deleteTenant(id, flatId));
 
     const columns = [{
@@ -40,7 +35,7 @@ const TenantsTable = () => {
     },{
         title: "Действия",
         key: "actions",
-        render: (text, tenant) => (
+        render: (_, tenant) => (
             <Space>
                 <Button
                     type="primary"
@@ -69,37 +64,12 @@ const TenantsTable = () => {
                 dataSource={tenants}
                 columns={columns}
                 rowKey={tenant => tenant.id}
-                title={() => <Title level={3}>Список жильцов</Title>}
                 style={{marginBottom: 24}}
+                pagination={false}
+                scroll={{x: true}}
             />
 
-            <Modal
-                title="Изменение данных жильца"
-                centered
-                visible={editModalVisible}
-                onCancel={onCloseEditModal}
-                footer={null}
-            >
-                {editTenantSuccess &&
-                    <Alert
-                        message="Данные жильца успешно изменены"
-                        type="success"
-                        showIcon
-                        style={{marginBottom: 24}}
-                    />
-                }
-
-                {editTenantError &&
-                    <Alert
-                        message={editTenantError}
-                        type="error"
-                        showIcon
-                        style={{marginBottom: 24}}
-                    />
-                }
-
-                <EditTenantForm />
-            </Modal>
+            <EditTenantModal />
         </>
     );
 };

@@ -3,45 +3,45 @@ import actionTypes from "./address.actionTypes";
 const streetsLoadStart = () => ({
     type: actionTypes.STREETS_LOAD_START,
 });
-const streetsLoadSuccess = (streets) => ({
+const streetsLoadSuccess = streets => ({
     type: actionTypes.STREETS_LOAD_SUCCESS,
-    payload: streets,
+    payload: streets
 });
 
 
 const housesLoadStart = () => ({
-    type: actionTypes.HOUSES_LOAD_START,
+    type: actionTypes.HOUSES_LOAD_START
 });
-const housesLoadSuccess = (houses) => ({
+const housesLoadSuccess = houses => ({
     type: actionTypes.HOUSES_LOAD_SUCCESS,
-    payload: houses,
+    payload: houses
 });
 
 
 const flatsLoadStart = () => ({
-    type: actionTypes.FLATS_LOAD_START,
+    type: actionTypes.FLATS_LOAD_START
 });
-const flatsLoadSuccess = (flats) => ({
+const flatsLoadSuccess = flats => ({
     type: actionTypes.FLATS_LOAD_SUCCESS,
-    payload: flats,
+    payload: flats
 });
 
 
-const selectStreet = (streetId) => ({
+const selectStreet = streetId => ({
     type: actionTypes.SELECT_STREET,
-    payload: streetId,
+    payload: streetId
 });
-const selectHouse = (houseId) => ({
+const selectHouse = houseId => ({
     type: actionTypes.SELECT_HOUSE,
-    payload: houseId,
+    payload: houseId
 });
-const selectFlat = (flatId) => ({
+const selectFlat = flatId => ({
     type: actionTypes.SELECT_FLAT,
-    payload: flatId,
+    payload: flatId
 });
 
 
-const addressLoadError = (errorMessage) => ({
+const addressLoadError = errorMessage => ({
     type: actionTypes.ADDRESS_LOAD_ERROR,
     payload: errorMessage,
 });

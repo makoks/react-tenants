@@ -8,13 +8,13 @@ const addressReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 areStreetsLoading: true,
                 streets: null,
-                errorMessage: null,
+                errorMessage: null
             };
         case actionTypes.STREETS_LOAD_SUCCESS:
             return {
                 ...state,
                 areStreetsLoading: false,
-                streets: payload,
+                streets: payload
             };
 
 
@@ -23,13 +23,13 @@ const addressReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 areHousesLoading: true,
                 houses: null,
-                errorMessage: null,
+                errorMessage: null
             };
         case actionTypes.HOUSES_LOAD_SUCCESS:
             return {
                 ...state,
                 areHousesLoading: false,
-                houses: payload,
+                houses: payload
             };
 
 
@@ -38,25 +38,30 @@ const addressReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 areFlatsLoading: true,
                 flats: null,
-                errorMessage: null,
+                errorMessage: null
             };
         case actionTypes.FLATS_LOAD_SUCCESS:
             return {
                 ...state,
                 areFlatsLoading: false,
-                flats: payload,
+                flats: payload
             };
 
 
         case actionTypes.SELECT_STREET:
             return {
                 ...state,
-                streetId: payload
+                streetId: payload,
+                houseId: null,
+                flatId: null,
+                tenants: null
             };
         case actionTypes.SELECT_HOUSE:
             return {
                 ...state,
-                houseId: payload
+                houseId: payload,
+                flatId: null,
+                tenants: null
             };
         case actionTypes.SELECT_FLAT:
             return {
@@ -71,7 +76,7 @@ const addressReducer = (state = initialState, { type, payload }) => {
                 areStreetsLoading: false,
                 areHousesLoading: false,
                 areFlatLoading: false,
-                errorMessage: payload,
+                errorMessage: payload
             };
 
         default:

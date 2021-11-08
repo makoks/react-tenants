@@ -9,7 +9,7 @@ export const loadTenants = addressId => dispatch => {
         .catch(error => dispatch(actions.tenantsError(error.message)));
 };
 
-export const addTenant = (values, addressId) => (dispatch) => {
+export const addTenant = (values, addressId) => dispatch => {
     dispatch(actions.addTenantStart());
 
     TenantsService.postTenant(values)

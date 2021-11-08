@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Input } from "antd";
 
-import { editTenant } from "../redux/reducers/tenants/tenants.thunks";
+import { editTenant } from "../../redux/reducers/tenants/tenants.thunks";
 
 const EditTenantForm = () => {
     const dispatch = useDispatch();
     const [form] = Form.useForm();
 
-    const { tenant, editTenantLoading } = useSelector((state) => state.tenants);
-    const { flatId } = useSelector((state) => state.address);
+    const { tenant, editTenantLoading } = useSelector(state => state.tenants);
+    const { flatId } = useSelector(state => state.address);
 
     const onEditTenant = values => {
         dispatch(editTenant({phone: tenant.phone, ...values}, flatId));

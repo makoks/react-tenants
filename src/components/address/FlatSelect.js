@@ -2,15 +2,15 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Form, Select } from "antd";
 
-import actions from "../redux/reducers/address/address.actions";
-import { loadTenants } from "../redux/reducers/tenants/tenants.thunks";
+import actions from "../../redux/reducers/address/address.actions";
+import { loadTenants } from "../../redux/reducers/tenants/tenants.thunks";
 
 const { Option } = Select;
 
 const FlatSelect = () => {
     const dispatch = useDispatch();
 
-    const { areFlatsLoading, flats } = useSelector((state) => state.address);
+    const { areFlatsLoading, flats } = useSelector(state => state.address);
 
     const onFlatChange = flatId => {
         dispatch(actions.selectFlat(flatId));
@@ -29,7 +29,7 @@ const FlatSelect = () => {
                 }
                 loading={areFlatsLoading}
                 disabled={flats === null}
-                style={{width: 200}}
+                style={{width: 170}}
             >
                 {flats && flats.map(flat => (
                     <Option key={flat.id} value={flat.id}>{flat.name}</Option>

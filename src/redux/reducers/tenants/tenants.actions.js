@@ -17,7 +17,7 @@ const closeAddModal = () => ({
 });
 
 
-const openEditModal = (tenant) => ({
+const openEditModal = tenant => ({
     type: actionTypes.OPEN_EDIT_MODAL,
     payload: tenant
 });

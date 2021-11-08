@@ -2,16 +2,15 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Form, Input } from "antd";
 
-import { addTenant } from "../redux/reducers/tenants/tenants.thunks";
+import { addTenant } from "../../redux/reducers/tenants/tenants.thunks";
 
 const AddTenantForm = () => {
     const dispatch = useDispatch();
-    const { addTenantLoading } = useSelector((state) => state.tenants);
-    const { flatId } = useSelector((state) => state.address);
 
-    const onAddTenant = values => {
-        dispatch(addTenant(values, flatId));
-    };
+    const { addTenantLoading } = useSelector(state => state.tenants);
+    const { flatId } = useSelector(state => state.address);
+
+    const onAddTenant = values => dispatch(addTenant(values, flatId));
 
     return (
         <Form
